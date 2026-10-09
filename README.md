@@ -30,7 +30,7 @@ part of the [Orazaka platform](https://github.com/krizaka/orazaka) by [Krizaka](
 | `orazaka-persistence-app-api` | `com.orazaka:orazaka-persistence-app-api` | Application-persistence ports & DTOs (chat, jobs, models, configs, outbox) implemented by `orazaka-persistence-app`. |
 
 Domain contracts live with their domain: `krizaka-users-api` in
-[krizaka-users](https://github.com/krizaka/krizaka-users), `orazaka-billing-api` in [orazaka-billing](https://github.com/krizaka/orazaka-billing),
+[krizaka-users](https://github.com/krizaka/krizaka-users), `krizaka-billing-api` in [krizaka-billing](https://github.com/krizaka/krizaka-billing),
 `orazaka-studio-api` in [orazaka-studio](https://github.com/krizaka/orazaka-studio).
 
 ## Rules

@@ -26,8 +26,8 @@ part of the [Orazaka platform](https://github.com/krizaka/orazaka) by [Krizaka](
 
 | Module | Artifact | Role |
 |:---|:---|:---|
-| `orazaka-jobs-api` | `com.orazaka:orazaka-jobs-api` | Job plane contract: job commands/events, lanes, typed failure causes, capability descriptors. |
-| `orazaka-persistence-app-api` | `com.orazaka:orazaka-persistence-app-api` | Application-persistence ports & DTOs (chat, jobs, models, configs, outbox) implemented by `orazaka-persistence-app`. |
+| `orazaka-jobs-api` | `com.krizaka.orazaka:orazaka-jobs-api` | Job plane contract: job commands/events, lanes, typed failure causes, capability descriptors. |
+| `orazaka-persistence-app-api` | `com.krizaka.orazaka:orazaka-persistence-app-api` | Application-persistence ports & DTOs (chat, jobs, models, configs, outbox) implemented by `orazaka-persistence-app`. |
 
 Domain contracts live with their domain: `krizaka-users-api` in
 [krizaka-users](https://github.com/krizaka/krizaka-users), `krizaka-billing-api` in [krizaka-billing](https://github.com/krizaka/krizaka-billing),

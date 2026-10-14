@@ -59,4 +59,15 @@ public interface CatalogModelManager {
    * @return The base URL endpoint string, or null if not found.
    */
   String getProviderBaseUrl(String providerName);
+
+  /**
+   * Resolves the API key of the given provider ({@code ai_providers.api_key}): a hosted
+   * OpenAI-compatible provider (serverless inference) needs it on every call; a local one has none.
+   *
+   * @param providerName The unique provider name (e.g. "do-inference").
+   * @return The provider's key, or null when it has none or is unknown.
+   */
+  default String getProviderApiKey(String providerName) {
+    return null;
+  }
 }

@@ -48,7 +48,7 @@ public record CapabilityRoute(
   /** Compact canonical constructor enforcing the contract's invariants (ERR-106). */
   public CapabilityRoute {
     latencyClass =
-        (latencyClass == null || latencyClass.isBlank()) ? DEFAULT_LATENCY_CLASS : latencyClass;
+        latencyClass == null || latencyClass.isBlank() ? DEFAULT_LATENCY_CLASS : latencyClass;
     if (featureKey == null || featureKey.isBlank()) {
       throw new IllegalArgumentException("featureKey must not be blank");
     }

@@ -1,5 +1,7 @@
 package com.krizaka.orazaka.jobs.domain.exception;
 
+import java.io.Serial;
+
 /**
  * Thrown when a {@link com.krizaka.orazaka.jobs.domain.port.JobExecutor} cannot complete a job.
  *
@@ -13,7 +15,7 @@ package com.krizaka.orazaka.jobs.domain.exception;
  */
 public class JobExecutionException extends Exception {
 
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * @param message what failed, in terms the operator reading a failed job can act on

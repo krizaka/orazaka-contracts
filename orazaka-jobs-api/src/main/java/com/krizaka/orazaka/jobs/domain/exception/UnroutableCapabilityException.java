@@ -1,5 +1,7 @@
 package com.krizaka.orazaka.jobs.domain.exception;
 
+import java.io.Serial;
+
 /**
  * Thrown when a capability has no enabled route, at publish time and at dispatch time alike.
  *
@@ -13,7 +15,7 @@ package com.krizaka.orazaka.jobs.domain.exception;
  */
 public class UnroutableCapabilityException extends RuntimeException {
 
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   private final String featureKey;
 

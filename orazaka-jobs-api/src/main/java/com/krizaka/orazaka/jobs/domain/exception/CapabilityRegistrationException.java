@@ -1,5 +1,7 @@
 package com.krizaka.orazaka.jobs.domain.exception;
 
+import java.io.Serial;
+
 /**
  * A capability could not be registered or removed.
  *
@@ -9,7 +11,7 @@ package com.krizaka.orazaka.jobs.domain.exception;
  */
 public class CapabilityRegistrationException extends RuntimeException {
 
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * Creates the exception.

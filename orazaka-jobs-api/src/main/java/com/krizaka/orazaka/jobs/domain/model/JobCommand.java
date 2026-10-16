@@ -1,5 +1,6 @@
 package com.krizaka.orazaka.jobs.domain.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +40,7 @@ public record JobCommand(
     DataClass dataClass)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /** Sentinel written by the 4-argument constructor when the caller resolved no model. */
   private static final String UNRESOLVED_MODEL = "default";
@@ -134,7 +135,7 @@ public record JobCommand(
     Objects.requireNonNull(jobId, "Job ID cannot be null");
     Objects.requireNonNull(featureKey, "Feature key cannot be null");
     Objects.requireNonNull(model, "Model cannot be null");
-    payload = (payload != null) ? Map.copyOf(payload) : Map.of();
+    payload = payload != null ? Map.copyOf(payload) : Map.of();
   }
 
   /**
@@ -221,14 +222,14 @@ public record JobCommand(
    *     null} when the job was not metered — which is a valid state, not an error
    */
   public String holdId() {
-    return (payload.get(HOLD_ID_KEY) instanceof String s && !s.isBlank()) ? s : null;
+    return payload.get(HOLD_ID_KEY) instanceof String s && !s.isBlank() ? s : null;
   }
 
   /**
    * @return the id tying every hold of one run together; {@code null} when the job was not metered
    */
   public String correlationId() {
-    return (payload.get(CORRELATION_ID_KEY) instanceof String s && !s.isBlank()) ? s : null;
+    return payload.get(CORRELATION_ID_KEY) instanceof String s && !s.isBlank() ? s : null;
   }
 
   /**
@@ -256,7 +257,7 @@ public record JobCommand(
     if (value == null) {
       value = payload.get("text");
     }
-    return (value instanceof String s) ? s : null;
+    return value instanceof String s ? s : null;
   }
 
   /**
@@ -278,34 +279,34 @@ public record JobCommand(
    *     absent
    */
   public String requestedModel() {
-    return (payload.get("model") instanceof String s) ? s : null;
+    return payload.get("model") instanceof String s ? s : null;
   }
 
   /**
    * @return the voice id for speech synthesis ("voice" key); {@code null} if absent
    */
   public String voice() {
-    return (payload.get("voice") instanceof String s) ? s : null;
+    return payload.get("voice") instanceof String s ? s : null;
   }
 
   /**
    * @return the requested duration in seconds ("durationSeconds" key); {@code null} if absent
    */
   public Integer durationSeconds() {
-    return (payload.get("durationSeconds") instanceof Integer i) ? i : null;
+    return payload.get("durationSeconds") instanceof Integer i ? i : null;
   }
 
   /**
    * @return the input image path for image-to-video ("imagePath" key); {@code null} if absent
    */
   public String imagePath() {
-    return (payload.get("imagePath") instanceof String s) ? s : null;
+    return payload.get("imagePath") instanceof String s ? s : null;
   }
 
   /**
    * @return the input media file path ("filePath" key); {@code null} if absent
    */
   public String filePath() {
-    return (payload.get("filePath") instanceof String s) ? s : null;
+    return payload.get("filePath") instanceof String s ? s : null;
   }
 }

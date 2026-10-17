@@ -18,8 +18,18 @@ public record CatalogModelDto(
     Integer maxSteps,
     Integer recommendedFps,
     String supportedHardware,
-    String description)
+    String description,
+    String runsOn,
+    String status,
+    Integer typicalSeconds,
+    Integer priceCents)
     implements Serializable {
+
+  /** Hosted by a provider (a cloud API), as opposed to the operator's own hardware. */
+  public static final String RUNS_ON_PROVIDER = "provider";
+
+  /** The only status a user may be offered a model in (the others are planned or internal). */
+  public static final String STATUS_AVAILABLE = "available";
 
   public CatalogModelDto {
     Objects.requireNonNull(modelName, "modelName cannot be null");
@@ -40,6 +50,56 @@ public record CatalogModelDto(
     if (providerName == null || providerName.isBlank()) {
       providerName = "ollama";
     }
+    if (status == null || status.isBlank()) {
+      status = STATUS_AVAILABLE;
+    }
+    if (typicalSeconds != null && typicalSeconds < 0) {
+      throw new IllegalArgumentException("typicalSeconds cannot be negative");
+    }
+    if (priceCents != null && priceCents < 0) {
+      throw new IllegalArgumentException("priceCents cannot be negative");
+    }
+  }
+
+  /** Whether a provider (a cloud API) serves this model rather than the operator's hardware. */
+  public boolean isHosted() {
+    return RUNS_ON_PROVIDER.equals(runsOn);
+  }
+
+  /** Whether the catalogue publishes this model to users ({@code status = available}). */
+  public boolean isOffered() {
+    return STATUS_AVAILABLE.equals(status);
+  }
+
+  /** Constructor without the user-facing facts (runsOn, status, typical time, price). */
+  public CatalogModelDto(
+      Integer id,
+      String modelName,
+      String modelLabel,
+      String category,
+      String options,
+      Boolean isDefault,
+      String providerName,
+      Integer maxSteps,
+      Integer recommendedFps,
+      String supportedHardware,
+      String description) {
+    this(
+        id,
+        modelName,
+        modelLabel,
+        category,
+        options,
+        isDefault,
+        providerName,
+        maxSteps,
+        recommendedFps,
+        supportedHardware,
+        description,
+        null,
+        null,
+        null,
+        null);
   }
 
   /** Backwards compatible constructor with 6 parameters. */

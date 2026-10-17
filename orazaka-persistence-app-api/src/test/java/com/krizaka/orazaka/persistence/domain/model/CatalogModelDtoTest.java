@@ -57,4 +57,54 @@ class CatalogModelDtoTest {
     assertEquals(a, b);
     assertEquals(a.hashCode(), b.hashCode());
   }
+
+  @Test
+  void userFacingFacts_defaultToOfferedAndUnmeasured() {
+    var dto = new CatalogModelDto(1, "m", "l", "image", null, false, "p", 4, null, null, "d");
+    assertTrue(dto.isOffered());
+    assertFalse(dto.isHosted());
+    assertNull(dto.typicalSeconds());
+    assertNull(dto.priceCents());
+  }
+
+  @Test
+  void userFacingFacts_areCarried() {
+    var dto =
+        new CatalogModelDto(
+            1,
+            "m",
+            "l",
+            "image",
+            null,
+            false,
+            "p",
+            null,
+            null,
+            null,
+            "d",
+            "provider",
+            "planned",
+            8,
+            8);
+    assertTrue(dto.isHosted());
+    assertFalse(dto.isOffered());
+    assertEquals(8, dto.typicalSeconds());
+    assertEquals(8, dto.priceCents());
+  }
+
+  @Test
+  void negativeTypicalSecondsOrPrice_throws() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () ->
+            new CatalogModelDto(
+                1, "m", "l", "image", null, false, "p", null, null, null, null, null, null, -1,
+                null));
+    assertThrows(
+        IllegalArgumentException.class,
+        () ->
+            new CatalogModelDto(
+                1, "m", "l", "image", null, false, "p", null, null, null, null, null, null, null,
+                -1));
+  }
 }

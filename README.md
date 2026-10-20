@@ -13,6 +13,7 @@
 Tier-1 platform contracts shared by every Orazaka service: the job plane (jobs-api) and the application-persistence ports (persistence-app-api). Pure interfaces and records, zero implementation.
 
 [![CI](https://github.com/krizaka/orazaka-contracts/actions/workflows/ci.yml/badge.svg)](https://github.com/krizaka/orazaka-contracts/actions/workflows/ci.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/krizaka/orazaka-contracts/badge)](https://scorecard.dev/viewer/?uri=github.com/krizaka/orazaka-contracts)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Orazaka](https://img.shields.io/badge/part%20of-Orazaka-f67e23)](https://github.com/krizaka/orazaka#repositories)
 [![Docs](https://img.shields.io/badge/docs-krizaka.com-f67e23)](https://www.krizaka.com/en/products/orazaka)

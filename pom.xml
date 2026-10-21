@@ -34,5 +34,6 @@
     <modules>
         <module>orazaka-jobs-api</module>
         <module>orazaka-persistence-app-api</module>
+        <module>orazaka-crypto</module>
     </modules>
 </project>

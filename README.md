@@ -17,6 +17,7 @@ Tier-1 platform contracts shared by every Orazaka service: the job plane (jobs-a
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Orazaka](https://img.shields.io/badge/part%20of-Orazaka-f67e23)](https://github.com/krizaka/orazaka#repositories)
 [![Docs](https://img.shields.io/badge/docs-krizaka.com-f67e23)](https://www.krizaka.com/en/products/orazaka)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=krizaka_orazaka-contracts&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=krizaka_orazaka-contracts) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=krizaka_orazaka-contracts&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=krizaka_orazaka-contracts) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=krizaka_orazaka-contracts&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=krizaka_orazaka-contracts) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=krizaka_orazaka-contracts&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=krizaka_orazaka-contracts) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=krizaka_orazaka-contracts&metric=coverage)](https://sonarcloud.io/summary/new_code?id=krizaka_orazaka-contracts)
 
 [Documentation](https://www.krizaka.com/en/products/orazaka) · [Website](https://www.krizaka.com) · [Krizaka on GitHub](https://github.com/krizaka)
 

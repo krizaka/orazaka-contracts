@@ -37,9 +37,9 @@ class JobPersistenceProviderPagingTest {
     PageResult<JobDto> page = provider().pageJobsByUserId("u1", 2, 10);
 
     assertThat(asked).hasSize(1);
-    assertThat(asked.get(0).getPageNumber()).isEqualTo(2);
-    assertThat(asked.get(0).getPageSize()).isEqualTo(10);
-    assertThat(asked.get(0).getSort().getOrderFor("createdAt").isDescending()).isTrue();
+    assertThat(asked.getFirst().getPageNumber()).isEqualTo(2);
+    assertThat(asked.getFirst().getPageSize()).isEqualTo(10);
+    assertThat(asked.getFirst().getSort().getOrderFor("createdAt").isDescending()).isTrue();
     assertThat(page.number()).isEqualTo(2);
     assertThat(page.size()).isEqualTo(10);
     assertThat(page.totalElements()).isEqualTo(21);
@@ -50,7 +50,7 @@ class JobPersistenceProviderPagingTest {
   void theWholePlatformPageIsAskedTheSameWay() {
     PageResult<JobDto> page = provider().pageAllJobs(0, 5);
 
-    assertThat(asked.get(0).getSort().getOrderFor("createdAt").isDescending()).isTrue();
+    assertThat(asked.getFirst().getSort().getOrderFor("createdAt").isDescending()).isTrue();
     assertThat(page.size()).isEqualTo(5);
     assertThat(page.totalPages()).isEqualTo(5);
   }

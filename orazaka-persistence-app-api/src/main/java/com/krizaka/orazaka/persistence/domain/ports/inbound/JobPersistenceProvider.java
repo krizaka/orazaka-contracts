@@ -1,13 +1,16 @@
 package com.krizaka.orazaka.persistence.domain.ports.inbound;
 
 import com.krizaka.orazaka.jobs.domain.model.DataClass;
+import com.krizaka.orazaka.jobs.domain.model.PageResult;
 import com.krizaka.orazaka.persistence.domain.model.JobDto;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 /** Public contract for job lifecycle management and state persistence. */
 public interface JobPersistenceProvider {
@@ -78,6 +81,28 @@ public interface JobPersistenceProvider {
    * @return Paginated list of all JobDtos.
    */
   Page<JobDto> getAllJobs(Pageable pageable);
+
+  /**
+   * The newest-first page of one user's jobs, in plain Java: callers that must not depend on a
+   * framework page type (orazaka-ai-engine core) use this instead of {@link #getJobsByUserId}.
+   */
+  default PageResult<JobDto> pageJobsByUserId(String userId, int page, int size) {
+    return toResult(getJobsByUserId(userId, newestFirst(page, size)));
+  }
+
+  /** The newest-first page of every user's jobs, in plain Java. */
+  default PageResult<JobDto> pageAllJobs(int page, int size) {
+    return toResult(getAllJobs(newestFirst(page, size)));
+  }
+
+  private static Pageable newestFirst(int page, int size) {
+    return PageRequest.of(page, size, Sort.by("createdAt").descending());
+  }
+
+  private static PageResult<JobDto> toResult(Page<JobDto> page) {
+    return new PageResult<>(
+        page.getContent(), page.getNumber(), page.getSize(), page.getTotalElements());
+  }
 
   /**
    * Retrieves every job currently in one of the given statuses, across all users. Used by the

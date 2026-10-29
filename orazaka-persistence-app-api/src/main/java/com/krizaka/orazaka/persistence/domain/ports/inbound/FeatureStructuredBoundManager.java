@@ -22,35 +22,31 @@ public interface FeatureStructuredBoundManager {
   int MAX_ATTEMPTS = 5;
 
   /**
-   * @param featureKey the feature, e.g. {@code agent.code.issue-to-pr}; {@code null} or blank reads
-   *     the default row
-   * @return the bound of the feature's own row, else the default row's; empty only when neither
-   *     exists, in which case the caller keeps its own safe default
+   * Reads one feature's attempts.
+   *
+   * @param featureKey a feature key such as {@code agent.code.issue-to-pr}; blank means the default
+   * @return the feature's own row or else the default row; empty if neither exists (the caller then
+   *     applies its own safe default)
    */
   OptionalInt maxAttempts(String featureKey);
 
-  /**
-   * @return every bound by feature key (the default row {@code *} included), sorted by key
-   */
+  /** Every row by feature key, the default row {@code *} included, sorted by key. */
   Map<String, Integer> all();
 
   /**
-   * Creates or replaces the bound of a feature (administrator action, audited by the caller).
+   * Writes a row (an administrator action; the caller audits it).
    *
-   * @param featureKey the feature, or {@code *} for the default row; non-blank, at most 120
-   *     characters
-   * @param maxAttempts from {@link #MIN_ATTEMPTS} to {@link #MAX_ATTEMPTS}
-   * @throws IllegalArgumentException when the key is blank or too long or the attempts are out of
-   *     range
+   * @param featureKey the feature or {@code *}; non-blank and at most 120 characters
+   * @param maxAttempts between {@link #MIN_ATTEMPTS} and {@link #MAX_ATTEMPTS}
+   * @throws IllegalArgumentException on a bad key or an attempts value out of range
    */
   void upsert(String featureKey, int maxAttempts);
 
   /**
-   * Removes a feature's own bound so it falls back to the default row. The default row itself is
-   * never removed.
+   * Drops a feature's own row so it reads the default again; the default row stays.
    *
-   * @return {@code true} when a row was removed
-   * @throws IllegalArgumentException when the key is the default row's
+   * @return whether a row was dropped
+   * @throws IllegalArgumentException for the default row's key
    */
   boolean delete(String featureKey);
 }

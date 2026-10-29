@@ -39,7 +39,8 @@ public interface FeatureToolBoundManager {
    * @param featureKey the feature, or {@code *} for the default row; non-blank, at most 120
    *     characters
    * @param maxToolRounds from {@link #MIN_ROUNDS} to {@link #MAX_ROUNDS}
-   * @throws IllegalArgumentException when the key is blank or too long or the rounds are out of range
+   * @throws IllegalArgumentException when the key is blank or too long or the rounds are out of
+   *     range
    */
   void upsert(String featureKey, int maxToolRounds);
 

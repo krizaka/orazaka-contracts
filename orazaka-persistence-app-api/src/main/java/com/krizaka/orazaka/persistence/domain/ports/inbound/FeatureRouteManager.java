@@ -1,6 +1,7 @@
 package com.krizaka.orazaka.persistence.domain.ports.inbound;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * The models a <b>feature key</b> routes to (ADR-029, ADR-093): routing is data an administrator
@@ -19,4 +20,10 @@ public interface FeatureRouteManager {
    *     or the key is blank, which is not an error
    */
   List<String> modelNames(String featureKey);
+
+  /**
+   * @return every feature that has a route, by key (sorted), with its model names in rank order;
+   *     read-only, for the administrator's console
+   */
+  Map<String, List<String>> allRoutes();
 }

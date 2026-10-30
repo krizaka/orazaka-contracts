@@ -46,5 +46,5 @@ public interface FeatureCachePolicyManager {
    * @return whether a row was dropped
    * @throws IllegalArgumentException for the default row's key
    */
-  boolean delete(String featureKey);
+  boolean remove(String featureKey);
 }

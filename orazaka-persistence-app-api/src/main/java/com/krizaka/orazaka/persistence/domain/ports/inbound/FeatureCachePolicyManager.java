@@ -41,10 +41,11 @@ public interface FeatureCachePolicyManager {
   void upsert(String featureKey, String strategy);
 
   /**
-   * Drops a feature's own row so it reads the default again; the default row stays.
+   * Removes a feature's own policy, so the feature follows the default row again.
    *
-   * @return whether a row was dropped
-   * @throws IllegalArgumentException for the default row's key
+   * @param featureKey the feature whose row goes; the default row's key is refused
+   * @return true when a row existed and was removed
+   * @throws IllegalArgumentException when asked to remove the default row
    */
   boolean remove(String featureKey);
 }

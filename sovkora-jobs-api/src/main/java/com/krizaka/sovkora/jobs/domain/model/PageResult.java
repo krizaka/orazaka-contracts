@@ -5,10 +5,9 @@ import java.util.Objects;
 import java.util.function.Function;
 
 /**
- * One page of a listing, in plain Java (sovkora-engine#121: no framework type crosses a
- * contract). The field names are the ones the web client already reads from a serialised Spring
- * {@code Page}: {@code content}, {@code number}, {@code size}, {@code totalElements}, {@code
- * totalPages}.
+ * One page of a listing, in plain Java (sovkora-engine#121: no framework type crosses a contract).
+ * The field names are the ones the web client already reads from a serialised Spring {@code Page}:
+ * {@code content}, {@code number}, {@code size}, {@code totalElements}, {@code totalPages}.
  *
  * @param content the items of this page, never null
  * @param number zero-based index of this page

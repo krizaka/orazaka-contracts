@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.OptionalInt;
 
 /**
- * The most tool rounds a <b>feature key</b> may run in one turn (ADR-029, sovkora-engine#169):
- * the bound is data an administrator edits, kept in {@code orazaka_feature_tool_bounds} ({@code
+ * The most tool rounds a <b>feature key</b> may run in one turn (ADR-029, sovkora-engine#169): the
+ * bound is data an administrator edits, kept in {@code orazaka_feature_tool_bounds} ({@code
  * feature_key}, {@code max_tool_rounds}, 1 to 32), never a constant in code. The row {@code *} is
  * the default of every feature without a row of its own.
  */
